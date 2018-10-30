@@ -3,6 +3,8 @@ package com.ceribit.android.asynctaskwithnewsapi.Utility;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.ceribit.android.asynctaskwithnewsapi.models.Article;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +24,7 @@ public class QueryUtils {
 
     private static String LOG_TAG = QueryUtils.class.getSimpleName();
 
-    public static List<String> fetchNewsData(String requestUrl){
+    public static List<Article> fetchNewsData(String requestUrl){
         URL url = createUrl(requestUrl);
 
         String jsonResponse = null;
@@ -33,10 +35,10 @@ public class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        List<String> responses = extractFeatureFromJson(jsonResponse);
+        List<Article> articles= extractFeatureFromJson(jsonResponse);
 
 
-        return responses;
+        return articles;
     }
 
     private static URL createUrl(String stringUrl){
@@ -96,21 +98,25 @@ public class QueryUtils {
         return output.toString();
     }
 
-    private static List<String> extractFeatureFromJson(String jsonResponse){
+    private static List<Article> extractFeatureFromJson(String jsonResponse){
         if(TextUtils.isEmpty(jsonResponse)){
             return null;
         }
 
-        List<String> responses = new ArrayList<>();
+        List<Article> responses = new ArrayList<>();
 
         try {
             JSONObject baseJsonResponse = new JSONObject(jsonResponse);
             JSONArray responseArray = baseJsonResponse.getJSONArray("articles");
 
-            JSONObject currentResponse = responseArray.getJSONObject(1);
-
-            String title = currentResponse.getString("title");
-            responses.add(title);
+            for(int i = 0; i < responseArray.length(); i++) {
+                JSONObject currentArticle = responseArray.getJSONObject(i);
+                String title = currentArticle.getString("title");
+                String author = currentArticle.getString("author");
+                String description = currentArticle.getString("description");
+                String content = currentArticle.getString("content");
+                responses.add(new Article(title, author, description, content));
+            }
 
         } catch (JSONException e){
             Log.e(LOG_TAG, "Problem parsing the earthquake JSON results.", e);
