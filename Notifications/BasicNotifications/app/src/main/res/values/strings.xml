@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">BasicNotifications</string>
+
+    <!-- Main Activity Strings -->
+    <string name="main_app_description">This app serves as a toy to practice different types of notifications</string>
+    <string name="label_single_notification">Click me for a single notification</string>
+    <string name="label_interval_notification">Click me to get multiple notifications</string>
+    <string name="label_stop_notifications">Turn off interval notifications</string>
+    
+    <!-- Channel Info -->
+    <string name="channel_name">Starter_Notification_Channel</string>
+    <string name="channel_description">This channel is just being used to practice the use of notifications</string>
+
+    <!-- Notification Strings -->
+    <string name="notification_single_title">Here\'s a notification!</string>
+    <string name="notification_single_description">
+            You just clicked the \"Single Notification\" button! " +
+            "This is the result!
+    </string>
+    <string name="notification_interval_title">Here\'s a timely notification!</string>
+    <string name="notification_interval_description">
+        You just clicked the \"Interval Notification\" button! " +
+            "This is a timely result!
+    </string>
+
+</resources>
