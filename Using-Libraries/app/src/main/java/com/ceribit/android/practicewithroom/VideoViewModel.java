@@ -6,6 +6,9 @@ import android.arch.lifecycle.LiveData;
 
 import java.util.List;
 
+/**
+ * ViewModels hide everything from the UI layer
+ */
 public class VideoViewModel extends AndroidViewModel {
 
     private VideoRepository mRepository;

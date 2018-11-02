@@ -6,6 +6,10 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
+/**
+ * Manages one or more data sources
+ * This class wraps AsyncTasks around actions
+ */
 public class VideoRepository {
     private VideoDao mVideoDao;
     private LiveData<List<Video>> mAllVideos;

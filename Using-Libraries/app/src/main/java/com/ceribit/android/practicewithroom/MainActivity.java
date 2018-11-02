@@ -26,14 +26,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Assign recyclerview items to the recyclerview
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final VideoListAdapter adapter = new VideoListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Get the ViewModel
         mVideoViewModel = ViewModelProviders.of(this).get(VideoViewModel.class);
 
+        // Get all the videos from the ViewModel
         mVideoViewModel.getAllVideos().observe(this, new Observer<List<Video>>() {
+            // Update the videos every time there is a change in the list
             @Override
             public void onChanged(@Nullable List<Video> videos) {
                 adapter.setVideos(videos);
