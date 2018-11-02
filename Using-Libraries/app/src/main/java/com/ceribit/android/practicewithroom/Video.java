@@ -1,43 +1,35 @@
 package com.ceribit.android.practicewithroom;
 
+import android.support.annotation.NonNull;
+
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity(tableName = "video_table")
 public class Video {
 
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "title")
     private String title;
-    private String description;
-    private String url;
-    private String creator;
 
-    public String getTitle() {
-        return title;
-    }
+//    @ColumnInfo(name = "description")
+//    private String description;
+//
+//    @ColumnInfo(name = "url")
+//    private String url;
+//
+//    @ColumnInfo(name = "creator_name")
+//    private String creator_name;
 
-    public void setTitle(String title) {
+    public Video(@NonNull String title) {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    @NonNull
+    public String getTitle(){
+        return this.title;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-
 }
