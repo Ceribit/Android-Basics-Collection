@@ -1,21 +1,21 @@
 Steps:
 
 1. Add Gradle Dependency
-    - In this case
+    - In this case:
     
-            def room_version = "2.1.0-alpha01"
-    
-            implementation "androidx.room:room-runtime:$room_version"
-            annotationProcessor "androidx.room:room-compiler:$room_version"  
+            def room_version = "1.1.1"
+        
+            implementation "android.arch.persistence.room:runtime:$room_version"
+            annotationProcessor "android.arch.persistence.room:compiler:$room_version" // use kapt for Kotlin
         
             // optional - RxJava support for Room
-            implementation "androidx.room:room-rxjava2:$room_version"
+            implementation "android.arch.persistence.room:rxjava2:$room_version"
         
             // optional - Guava support for Room, including Optional and ListenableFuture
-            implementation "androidx.room:room-guava:$room_version"
+            implementation "android.arch.persistence.room:guava:$room_version"
         
             // Test helpers
-            testImplementation "androidx.room:room-testing:$room_version"
+            testImplementation "android.arch.persistence.room:testing:$room_version"
             
     - Dependencies described by CodeLabs for Lifecycle Components
             
@@ -118,10 +118,10 @@ Steps:
                }
            }
         }
-        
+         
 7. Create the ViewModel
 
-- What is a ViewModel?:
+- What is a ViewModel?
   A ViewModel holds your app's UI data in a lifecycle-conscious way. It acts as a communication channel that facilitates information flow between the Repository and UI
   
   e.g. 
